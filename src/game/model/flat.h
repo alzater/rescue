@@ -1,29 +1,20 @@
-// flat.h
 #ifndef FLAT_H
 #define FLAT_H
 
 class Flat
 {
     public:
-    enum class FlatState
-    {
-        CLOSED,
-        OPENED,
-        INFIRE
-    };
-
     enum class FlatType
     {
         WINDOW,
-        TWO_WINDOWS,
+        TWO_WINDOWS
     };
 
     public:
-        Flat(int pos, int man, int jumpHeight, FlatType type);
+        Flat(std::pair<int, int> position, std::pair<int, int> size, int man, FlatType type);
 
-        int getPos() const;
-        int getJumpHeight() const;
-        FlatState getState() const;
+        std::pair<int, int> getPosition() const;
+        std::pair<int, int> getSize() const;
         FlatType getType() const;
 
         int getMan() const;
@@ -31,9 +22,8 @@ class Flat
 
     private:
         int _man;
-        FlatState _state;
-        const int _pos;
-        const int jumpHeight;
+        const std::pair<int, int> _position;
+        const std::pair<int, int> _size;
         const FlatType _type;
 };
 

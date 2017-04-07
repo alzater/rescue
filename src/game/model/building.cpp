@@ -1,5 +1,3 @@
-// building.cpp
-
 Building::Building()
 {}
 

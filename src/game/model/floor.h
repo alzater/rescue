@@ -1,4 +1,3 @@
-// Floor.h
 #ifndef FLOOR_H
 #define FLOOR_H
 
@@ -11,6 +10,8 @@ class Floor
     public:
         Floor(unsigned int _width, unsigned int _height, unsigned int _anchor);
         Floor(Floor&& another);
+
+        void addFlat(Flat&& flat);
 
         unsigned int getHeight() const;
         unsigned int getWidth() const;

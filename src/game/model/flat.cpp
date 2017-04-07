@@ -1,28 +1,39 @@
-// flat.cpp
 #include "flat.h"
 
-Flat::Flat( int x, int man )
-    : _pos(x)
+#include <assert.h>
+
+Flat(std::pair<int, int> position, std::pair<int, int> size, int man, FlatType type)
+    : _position(position)
+    , _size(size)
     , _man(man)
+    , _type(FlatType::WINDOW)
 {}
 
-int Flat::getPos() const
+std::pair<int, int> Flat::getPos() const
 {
-    return _pos;
+    return _position;
 }
 
-EFlatState Flat::getState() const
+std::pair<int, int> Flat::getSize() const
 {
-    return _state;
+    return _jumpHeight;
 }
 
-int Flat::getMan()
+FlatType Flat::getType() const
+{
+    return _type;
+}
+
+int Flat::getMan() const
 {
     return _man;
 }
 
 void Flat::decMan()
 {
+    assert(_man);
+
     if ( _man > 0 )
         _man--;
 }
+
