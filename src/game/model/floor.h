@@ -8,19 +8,19 @@
 class Floor
 {
     public:
-        Floor(unsigned int _width, unsigned int _height, unsigned int _anchor);
-        Floor(Floor&& another);
+        Floor(std::pair<int, int> size, int _anchor);
+        Floor(Floor&& other);
 
-        void addFlat(Flat&& flat);
+        bool addFlat(const Flat& flat);
 
-        unsigned int getHeight() const;
-        unsigned int getWidth() const;
-        const std::vector<Flat> getFlats() const;
+        int getHeight() const;
+        int getWidth() const;
+        int getAnchor() const;
+        const std::vector<Flat>& getFlats() const;
 
     private:
-        unsigned int _height;
-        unsigned int _width;
-        unsigned int _anchor;
+        std::pair<int, int> _size;
+        int _anchor;
 
         std::vector<Flat> _flats;
 };

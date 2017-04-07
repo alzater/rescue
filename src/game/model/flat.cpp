@@ -9,7 +9,7 @@ Flat(std::pair<int, int> position, std::pair<int, int> size, int man, FlatType t
     , _type(FlatType::WINDOW)
 {}
 
-std::pair<int, int> Flat::getPos() const
+std::pair<int, int> Flat::getPosition() const
 {
     return _position;
 }
