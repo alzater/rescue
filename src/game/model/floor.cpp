@@ -9,6 +9,7 @@ Floor::Floor(Floor&& other)
     : _size(other._size)
     , _anchor(other._anchor)
     , _flats(std::move(other._flats))
+    , _isEmpty(other._isEmpty)
 {}
 
 bool Flat::addFlat(const Flat& flat)
@@ -49,6 +50,8 @@ bool Flat::addFlat(const Flat& flat)
     }
 
     _flats.emplace(i, flat);
+    if( _isEmpty && flat.getMen() )
+        _isEmpty = false;
 
     return true;
 }
@@ -63,7 +66,7 @@ int Floor::getWidth() const
     return _size.first;
 }
 
-int getAnchor() const
+int Floor::getAnchor() const
 {
     return _anchor;
 }
@@ -72,3 +75,18 @@ const std::vector<Flat>& Floor::getFlats() const
 {
     return _flats;
 }
+
+bool Floor::hasMen()
+{
+    if( _isEmpty )
+        return false;
+
+    for( const auto& flat : _flats )
+        if( flat.getMen() )
+            return true;
+
+    _isEmpty = true;
+    return false;
+}
+
+

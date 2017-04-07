@@ -2,10 +2,10 @@
 
 #include <assert.h>
 
-Flat(std::pair<int, int> position, std::pair<int, int> size, int man, FlatType type)
+Flat(std::pair<int, int> position, std::pair<int, int> size, int men, FlatType type)
     : _position(position)
     , _size(size)
-    , _man(man)
+    , _men(men)
     , _type(FlatType::WINDOW)
 {}
 
@@ -24,16 +24,16 @@ FlatType Flat::getType() const
     return _type;
 }
 
-int Flat::getMan() const
+int Flat::getMen() const
 {
-    return _man;
+    return _men;
 }
 
-void Flat::decMan()
+void Flat::decreseMan()
 {
-    assert(_man);
+    assert(_men);
 
-    if ( _man > 0 )
-        _man--;
+    if ( _men > 0 )
+        _men--;
 }
 

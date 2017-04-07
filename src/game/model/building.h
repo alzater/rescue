@@ -8,14 +8,19 @@
 class Building
 {
     public:
-        Building();
+        Building(int maxWidth);
 
-    public:
         void addFloor( Floor&& floor );
         const std::vector<Floor>& getFloors() const;
 
+        int getMaxWidth() const;
+        int hasMen();
+
     private:
         std::vector<Floor> _floors;
+
+        int _maxWidth;
+        bool _isEmpty = true;
 };
 
 #endif // BUILDING_H

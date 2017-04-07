@@ -11,20 +11,21 @@ class Flat
     };
 
     public:
-        Flat(std::pair<int, int> position, std::pair<int, int> size, int man, FlatType type);
+        Flat(std::pair<int, int> position, std::pair<int, int> size, int men, FlatType type);
 
         std::pair<int, int> getPosition() const;
         std::pair<int, int> getSize() const;
         FlatType getType() const;
 
-        int getMan() const;
-        void decMan();
+        int getMen() const;
+        void decreseMan();
 
     private:
-        int _man;
         const std::pair<int, int> _position;
         const std::pair<int, int> _size;
         const FlatType _type;
+
+        int _men;
 };
 
 #endif // FLAT_H

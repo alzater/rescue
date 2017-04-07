@@ -18,9 +18,12 @@ class Floor
         int getAnchor() const;
         const std::vector<Flat>& getFlats() const;
 
+        bool hasMen();
+
     private:
         std::pair<int, int> _size;
         int _anchor;
+        bool _isEmpty = true;
 
         std::vector<Flat> _flats;
 };
