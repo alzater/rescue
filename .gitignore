@@ -1,2 +1,9 @@
 #vim temporary files
 *.swp
+
+proj.*
+!proj.linux
+
+bin/*
+cocos2d/*
+linux-build/*
