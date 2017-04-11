@@ -133,6 +133,7 @@ set(GAME_SRC
   src/game/model/building.cpp
   src/game/model/floor.cpp
   src/game/model/flat.cpp
+  src/game/model/building_loader.cpp
   src/game/view/building_view.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
@@ -143,6 +144,7 @@ set(GAME_HEADERS
   src/game/model/building.h
   src/game/model/floor.h
   src/game/model/flat.h
+  src/game/model/building_loader.h
   src/game/view/building_view.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )

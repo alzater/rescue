@@ -30,8 +30,6 @@ cocos2d::Node* BuildingView::getView()
         height += (float)floor.getHeight();
     }
 
-    node->setScale(5);
-
     return node;
 }
 

@@ -3,6 +3,7 @@
 
 #include "../src/game/view/building_view.h"
 #include "../src/game/model/building.h"
+#include "../src/game/model/building_loader.h"
 #include <memory>
 
 USING_NS_CC;
@@ -79,24 +80,11 @@ bool HelloWorld::init()
 
 
     // TODO TMP
-    Floor floor1(std::make_pair(100, 20), 10);
-    floor1.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
-    floor1.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+    BuildingLoader loader("Resources/building.cfg");
+    auto building = loader.loadBuilding();
 
-    Floor floor2(std::make_pair(100, 40), 10);
-    floor2.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
-    floor2.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+    BuildingView buildingView(*building.get());
 
-    Floor floor3(std::make_pair(100, 40), 10);
-    floor3.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
-    floor3.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
-
-    Building building(100);
-    building.addFloor(std::move(floor1));
-    building.addFloor(std::move(floor2));
-    building.addFloor(std::move(floor3));
-
-    BuildingView buildingView(building);
     buildingView.loadConfig("");
     addChild(buildingView.getView());
 
