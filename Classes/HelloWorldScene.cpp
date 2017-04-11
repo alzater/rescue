@@ -1,6 +1,10 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 
+#include "../src/game/view/building_view.h"
+#include "../src/game/model/building.h"
+#include <memory>
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -72,7 +76,30 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
+
+
+    // TODO TMP
+    Floor floor1(std::make_pair(100, 20), 10);
+    floor1.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+    floor1.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+
+    Floor floor2(std::make_pair(100, 40), 10);
+    floor2.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+    floor2.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+
+    Floor floor3(std::make_pair(100, 40), 10);
+    floor3.addFlat(Flat(std::make_pair(20, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+    floor3.addFlat(Flat(std::make_pair(80, 20), std::make_pair(2, 2), 5, Flat::FlatType::WINDOW));
+
+    Building building(100);
+    building.addFloor(std::move(floor1));
+    building.addFloor(std::move(floor2));
+    building.addFloor(std::move(floor3));
+
+    BuildingView buildingView(building);
+    buildingView.loadConfig("");
+    addChild(buildingView.getView());
+
     return true;
 }
 

@@ -1,4 +1,7 @@
-Building::Building()
+#include "building.h"
+
+Building::Building(int maxWidth)
+    : _maxWidth(maxWidth)
 {}
 
 void Building::addFloor( Floor&& floor )
@@ -19,11 +22,11 @@ bool Building::hasMen()
     if( _isEmpty )
         return false;
 
-    for( const auto& floor : _floors )
+    for( auto& floor : _floors )
         if( floor.hasMen() )
             return true;
 
     _isEmpty = true;
-    return False;
+    return false;
 }
 

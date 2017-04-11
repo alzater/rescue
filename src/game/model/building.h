@@ -14,7 +14,7 @@ class Building
         const std::vector<Floor>& getFloors() const;
 
         int getMaxWidth() const;
-        int hasMen();
+        bool hasMen();
 
     private:
         std::vector<Floor> _floors;

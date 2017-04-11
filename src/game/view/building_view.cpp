@@ -11,26 +11,34 @@ void BuildingView::loadConfig(const std::string& config)
     _spriteName = "window.png";
 }
 
-Node* Building::getView()
+cocos2d::Node* BuildingView::getView()
 {
+    cocos2d::Node* node = new cocos2d::Node;
+
     float height = 0;
     for( auto floor : _building.getFloors() )
     {
-        for( auto window : _floor.getWindows() )
+        for( auto window : floor.getFlats() )
         {
             auto position = window.getPosition();
-            auto windowView = createWindow(FlatType::WINDOW, window.getSize());
-            windowView->setPosition(position.first, position.second + heignt);
+            auto windowView = createWindow(Flat::FlatType::WINDOW, window.getSize());
+            windowView->setPosition(position.first, position.second + height);
+
+            node->addChild(windowView);
         }
 
-        height += floor.getSize().second;
+        height += (float)floor.getHeight();
     }
+
+    node->setScale(5);
+
+    return node;
 }
 
-Sprite* BuildingView::createWindow(FlatType type, std::pair<int, int> size)
+cocos2d::Sprite* BuildingView::createWindow(Flat::FlatType type, std::pair<int, int> size)
 {
-    auto window = Sprite::create(_spriteName);
-    window.setSize(size.first, size.second);
+    auto window = cocos2d::Sprite::create(_spriteName);
+    window->setScale(0.2f);
     return window;
 }
 

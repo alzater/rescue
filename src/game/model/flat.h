@@ -1,6 +1,8 @@
 #ifndef FLAT_H
 #define FLAT_H
 
+#include <utility>
+
 class Flat
 {
     public:
@@ -12,6 +14,9 @@ class Flat
 
     public:
         Flat(std::pair<int, int> position, std::pair<int, int> size, int men, FlatType type);
+        Flat(const Flat& other);
+
+        Flat& operator=(const Flat& other);
 
         std::pair<int, int> getPosition() const;
         std::pair<int, int> getSize() const;
@@ -21,9 +26,9 @@ class Flat
         void decreseMan();
 
     private:
-        const std::pair<int, int> _position;
-        const std::pair<int, int> _size;
-        const FlatType _type;
+        std::pair<int, int> _position;
+        std::pair<int, int> _size;
+        FlatType _type;
 
         int _men;
 };

@@ -2,12 +2,29 @@
 
 #include <assert.h>
 
-Flat(std::pair<int, int> position, std::pair<int, int> size, int men, FlatType type)
+Flat::Flat(std::pair<int, int> position, std::pair<int, int> size, int men, FlatType type)
     : _position(position)
     , _size(size)
     , _men(men)
     , _type(FlatType::WINDOW)
 {}
+
+Flat::Flat(const Flat& other)
+    : _position(other._position)
+    , _size(other._size)
+    , _men(other._men)
+    , _type(other._type)
+{}
+
+Flat& Flat::operator=(const Flat& other)
+{
+    _position = other._position;
+    _size = other._size;
+    _men = other._men;
+    _type = other._type;
+
+    return *this;
+}
 
 std::pair<int, int> Flat::getPosition() const
 {
@@ -16,10 +33,10 @@ std::pair<int, int> Flat::getPosition() const
 
 std::pair<int, int> Flat::getSize() const
 {
-    return _jumpHeight;
+    return _size;
 }
 
-FlatType Flat::getType() const
+Flat::FlatType Flat::getType() const
 {
     return _type;
 }

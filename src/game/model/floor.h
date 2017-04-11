@@ -8,7 +8,8 @@
 class Floor
 {
     public:
-        Floor(std::pair<int, int> size, int _anchor);
+        Floor(std::pair<int, int> size, int anchor);
+        Floor(const Floor& other);
         Floor(Floor&& other);
 
         bool addFlat(const Flat& flat);

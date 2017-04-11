@@ -1,8 +1,15 @@
 #include "floor.h"
 
-Floor::Floor(std::pair<int, int> size, int _anchor)
+Floor::Floor(std::pair<int, int> size, int anchor)
     : _size(size)
     , _anchor(anchor)
+{}
+
+Floor::Floor(const Floor& other)
+    : _size(other._size)
+    , _anchor(other._anchor)
+    , _flats(other._flats)
+    , _isEmpty(other._isEmpty)
 {}
 
 Floor::Floor(Floor&& other)
@@ -12,13 +19,13 @@ Floor::Floor(Floor&& other)
     , _isEmpty(other._isEmpty)
 {}
 
-bool Flat::addFlat(const Flat& flat)
+bool Floor::addFlat(const Flat& flat)
 {
     int position = flat.getPosition().first;
     int size = flat.getSize().first;
 
     int i = 0;
-    while( i < _flats.size() && _flats[i].getPosition().first < position)
+    while( i < (int)_flats.size() && _flats[i].getPosition().first < position)
         ++i;
 
     if( i == 0 )
@@ -35,7 +42,7 @@ bool Flat::addFlat(const Flat& flat)
             return false;
     }
 
-    if( i == _flats.size() )
+    if( i == (int)_flats.size() )
     {
         if( position + size/2+1 > _size.first )
             return false;
@@ -49,7 +56,7 @@ bool Flat::addFlat(const Flat& flat)
             return false;
     }
 
-    _flats.emplace(i, flat);
+    _flats.insert(_flats.begin() + i, flat);
     if( _isEmpty && flat.getMen() )
         _isEmpty = false;
 

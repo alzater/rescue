@@ -130,12 +130,20 @@ endif( WIN32 )
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/HelloWorldScene.cpp
+  src/game/model/building.cpp
+  src/game/model/floor.cpp
+  src/game/model/flat.cpp
+  src/game/view/building_view.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/HelloWorldScene.h
+  src/game/model/building.h
+  src/game/model/floor.h
+  src/game/model/flat.h
+  src/game/view/building_view.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
